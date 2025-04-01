@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha a Dificuldade do Quiz</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #fef7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .options-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 65px;
+            padding: 100px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .option {
+            background: linear-gradient(124deg, #185b92, #6cd2e4);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option:hover {
+            background: linear-gradient(135deg, #00aaff, #16106f);
+            transform: scale(1.05);
+        }
+
+        .description {
+            margin-top: 5px;
+            font-size: 16px;
+            color: #d3dadb;
+        }
+
+        .notification {
+            background: linear-gradient(135deg, #16106f, #00aaff);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(42, 39, 104, 0.5);
+            position: fixed;
+            animation: fadeIn 0.3s ease, scaleIn 0.5s ease;
+            text-align: center;
+            display: none;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        #notification1 {
+            top: 20px;
+            right: 20px;
+        }
+
+        #notification2 {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Escolha a Dificuldade do Quiz</h1>
+        <div class="options-container">
+            <div class="options">
+                <div class="option" onclick="startQuiz('facil')">
+                    E
+                    <div class="description">Fácil</div>
+                </div>
+                <div class="option" onclick="startQuiz('medio')">
+                    A
+                    <div class="description">Médio</div>
+                </div>
+                <div class="option" onclick="startQuiz('dificil')">
+                    S
+                    <div class="description">Difícil</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification1">
+        <button class="close-btn" onclick="closeNotification('notification1')">×</button>
+        <h2>Notificação</h2>
+        <p>Bem-vindo jogador! Boa sorte na sua aventura</p>
+    </div>
+
+    <div class="notification" id="notification2">
+        <button class="close-btn" onclick="closeNotification('notification2')">×</button>
+        <h2>Notificação</h2>
+        <p>Importante!</p>
+        <p>O rank do jogador afeta a dificuldade do quiz</p>
+    </div>
+
+    <script>
+        function closeNotification(notificationId) {
+            const notification = document.getElementById(notificationId);
+            notification.style.display = 'none';
+        }
+
+        function startQuiz(dificuldade) {
+            // Redireciona para a página correspondente com base na dificuldade
+            window.location.href = `quiz/${dificuldade}.php`; // Ajuste o caminho para a pasta "quiz"
+        }
+
+        // Exibir a primeira notificação após 1 segundo
+        setTimeout(() => {
+            document.getElementById('notification1').style.display = 'block';
+            // Exibir a segunda notificação após 4 segundos da primeira
+            setTimeout(() => {
+                document.getElementById('notification2').style.display = 'block';
+            }, 1005);
+        }, 1000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+Para criar um banco de dados para um quiz de perguntas e respostas, você pode usar um banco de dados relacional, como MySQL ou PostgreSQL, ou até mesmo um banco de dados NoSQL, dependendo das suas necessidades. A seguir, vou mostrar um modelo básico de banco de dados relacional para um quiz.
+
+### Estrutura do Banco de Dados
+
+1. **Tabela `perguntas`**
+   - Contém as perguntas do quiz.
+
+   ```sql
+   CREATE TABLE perguntas (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       pergunta TEXT NOT NULL,
+       categoria VARCHAR(255) NOT NULL
+   );
+   ```
+
+2. **Tabela `respostas`**
+   - Contém as respostas possíveis para cada pergunta. Uma pergunta pode ter várias respostas, sendo uma delas a correta.
+
+   ```sql
+   CREATE TABLE respostas (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       pergunta_id INT,
+       resposta TEXT NOT NULL,
+       correta BOOLEAN NOT NULL,
+       FOREIGN KEY (pergunta_id) REFERENCES perguntas(id)
+   );
+   ```
+
+3. **Tabela `usuarios`**
+   - Contém informações sobre os usuários que jogam o quiz.
+
+   ```sql
+   CREATE TABLE usuarios (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       nome VARCHAR(255) NOT NULL,
+       email VARCHAR(255) UNIQUE NOT NULL
+   );
+   ```
+
+4. **Tabela `resultados`**
+   - Armazena os resultados dos usuários no quiz, registrando quantas perguntas acertaram, por exemplo.
+
+   ```sql
+   CREATE TABLE resultados (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       usuario_id INT,
+       data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       pontuacao INT NOT NULL,
+       FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+   );
+   ```
+
+### Exemplo de Dados
+
+Aqui está um exemplo de como os dados podem ser inseridos nessas tabelas:
+
+1. **Inserindo perguntas:**
+
+   ```sql
+   INSERT INTO perguntas (pergunta, categoria) 
+   VALUES 
+   ('Qual é a capital da França?', 'Geografia'),
+   ('Quem escreveu "Dom Casmurro"?', 'Literatura');
+   ```
+
+2. **Inserindo respostas:**
+
+   ```sql
+   INSERT INTO respostas (pergunta_id, resposta, correta)
+   VALUES 
+   (1, 'Paris', TRUE),
+   (1, 'Londres', FALSE),
+   (1, 'Roma', FALSE),
+   (2, 'Machado de Assis', TRUE),
+   (2, 'José de Alencar', FALSE);
+   ```
+
+3. **Inserindo um usuário:**
+
+   ```sql
+   INSERT INTO usuarios (nome, email) 
+   VALUES ('João Silva', 'joao@exemplo.com');
+   ```
+
+4. **Inserindo um resultado:**
+
+   ```sql
+   INSERT INTO resultados (usuario_id, pontuacao) 
+   VALUES (1, 2);  -- Supondo que o usuário acertou 2 perguntas
+   ```
+
+### Consultas Comuns
+
+- **Obter todas as perguntas e suas respostas:**
+
+   ```sql
+   SELECT p.pergunta, r.resposta, r.correta
+   FROM perguntas p
+   JOIN respostas r ON p.id = r.pergunta_id;
+   ```
+
+- **Obter o resultado de um usuário específico:**
+
+   ```sql
+   SELECT u.nome, r.pontuacao, r.data
+   FROM resultados r
+   JOIN usuarios u ON r.usuario_id = u.id
+   WHERE u.id = 1;
+   ```
+
+Esse é um modelo básico. Dependendo das funcionalidades que você deseja implementar (como níveis de dificuldade, tempo de resposta, entre outras), você pode adaptar e expandir esse banco de dados.
+
+Se você tiver mais detalhes sobre como deseja que o quiz funcione, posso ajustar o modelo conforme necessário!
