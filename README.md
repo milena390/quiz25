@@ -20,41 +20,41 @@
 
 ## 2 Estrutura do Projeto    
 
-│── README.md         # Documentação inicial 
+│── README.md         
 
-│── /bd.txt         # Arquivos acessíveis publicamente (index.php, CSS, JS)    
+│── /bd.txt            
 
-│── /cadastro.php            # Código principal da aplicação    
+│── /cadastro.php               
 
-│ ── /db_quiz (2).mwb  # Lógica de controle    
+│ ── /db_quiz (2).mwb  
 
-│ ── /db_quiz.mwb  # Lógica de controle 
+│ ── /db_quiz.mwb  
 
-│ ── /db_quiz.tbl_usuario     # Conexão com banco de dados e regras de negócio    
+│ ── /db_quiz.tbl_usuario        
 
-│ ── /dificil.php      # Arquivos de interface (HTML, PHP)    
+│ ── /dificil.php       
 
-│── /estilo.css          # Configurações do projeto    
+│── /estilo.css             
 
-│── /facil.css        # Scripts SQL para criação e população do banco    
+│── /facil.css          
 
-│── /facil.php        # Testes automatizados    
+│── /facil.php            
 
-│── /fro.jpg             # Variáveis de ambiente    
+│── /fro.jpg                 
 
-│── /index.html    # Dependências do projeto    
+│── /index.html       
 
-│── /medio.php    # Dependências do projeto  
+│── /medio.php     
 
-│── /processa_cadastro.php    # Dependências do projeto    
+│── /processa_cadastro.php       
 
-│── /processa_ranking.php   # Dependências do projeto   
+│── /processa_ranking.php      
 
-│── /quiz.js  # Dependências do projeto   
+│── /quiz.js   
 
-│── quizes.sql  # Dependências do projeto   
+│── quizes.sql   
 
-│── ranking.php  # Dependências do projeto   
+│── ranking.php   
 
  ## 3 Configuração do Ambiente    
 
