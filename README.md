@@ -52,9 +52,9 @@
 
 │── /quiz.js   
 
-│── quizes.sql   
+│── /quizes.sql   
 
-│── ranking.php   
+│── /ranking.php   
 
  ## 3 Configuração do Ambiente    
 
