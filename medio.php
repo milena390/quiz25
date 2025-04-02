@@ -186,9 +186,9 @@
         <hr>
         <nav>
             <ul>
-            <li><a href="../cadastro/cadastro.php">Cadastro</a></li>
-                <li><a href="../ranking/ranking.php">Visualizar ranking</a></li>
-                <li><a href="../index.html">Voltar ao início</a></li>
+            <li><a href="cadastro.php">Cadastro</a></li>
+                <li><a href="ranking.php">Visualizar ranking</a></li>
+                <li><a href="index.html">Voltar ao início</a></li>
             </ul>
         </nav>
     </header>
